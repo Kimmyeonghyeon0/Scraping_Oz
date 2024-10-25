@@ -21,14 +21,17 @@ def get_melon_chart():
 
     lst_top_100 = soup.find_all(class_=[lst50, lst100])
 
-    for i in lst_top_100:
-        rank = i.select_one(".rank")
-        song_title = i.select_one(".ellipsis.rank01 a")
-        singer = i.select_one(".ellipsis.rank02 a")
-        album = i.select_one(".ellipsis.rank03 a")
+    #enumerate()
+    for  rank, i in enumerate(lst_top_100, 1):
+        title = i.select_one(".ellipsis.rank01 a").text
+        singer = i.select_one(".ellipsis.rank02 a").text
+        album = i.select_one(".ellipsis.rank03 a").text
 
-        print(f'순위 : {rank}')
-        print(f'순위 : {song_title}')
-        print(f'순위 : {singer}')
-        print(f'순위 : {album}')
+        
+
+        print(f'[순위] : {rank}')
+        print(f'제목 : {title}')
+        print(f'가수 : {singer}')
+        print(f'곡 정보 : {album}')
         print()
+        
